@@ -13,3 +13,11 @@ class ActiveSupport::TestCase
 
   # Add more helper methods to be used by all tests here...
 end
+
+class ActionDispatch::IntegrationTest
+  # Make the Capybara DSL available in all integration tests
+  include Capybara::DSL
+
+  # Crowdfunder is to be changed to the name of your app
+  Capybara.app = Crowdfunder::Application
+end
