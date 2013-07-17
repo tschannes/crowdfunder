@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <style>
+      body {
+        margin: 0px;
+        padding: 0px;
+        width:100%;
+        height:9000px;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="myCanvas" width="500px" height="500px"></canvas>
+    <script>
+      var canvas = document.getElementById('body');
+      
+        context.drawImage(blob1, 484, pos(254, -4400, relativeY, 0));
+      context.drawImage(blob2, 84, pos(954, -5400, relativeY, 0));
+      context.drawImage(blob3, 584, pos(1054, -3900, relativeY, 0));
+      context.drawImage(blob4, 44, pos(1400, -6900, relativeY, 0));
+      context.drawImage(blob5, -40, pos(1730, -5900, relativeY, 0));
+      context.drawImage(blob6, 325, pos(2860, -7900, relativeY, 0));
+      context.drawImage(blob7, 725, pos(2550, -4900, relativeY, 0));
+      context.drawImage(blob8, 570, pos(2300, -3700, relativeY, 0));
+      context.drawImage(blob9, 640, pos(3700, -9000, relativeY, 0));
+
+      // var canvas = document.getElementById('body');
+      // var context = canvas.getContext('2d');
+
+      // context.beginPath();
+      // context.moveTo(100, 150);
+      // context.lineTo(450, 50);
+      // context.lineWidth = 15;
+      // context.strokeStyle = 'yellow';
+      // context.stroke();
+
+      /**
+     * Updates and draws in the underlying visual elements to the canvas.
+     */
+    function updateElements () {
+
+      var relativeY = lastScrollY / h;
+
+      // Fill the canvas up
+      context.fillStyle = "#1e2124";
+      context.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Draw the background
+      context.drawImage(bg, 0, pos(0, -3600, relativeY, 0));
+
+      // Draw each of the blobs in turn
+      context.drawImage(blob1, 484, pos(254, -4400, relativeY, 0));
+      context.drawImage(blob2, 84, pos(954, -5400, relativeY, 0));
+      context.drawImage(blob3, 584, pos(1054, -3900, relativeY, 0));
+      context.drawImage(blob4, 44, pos(1400, -6900, relativeY, 0));
+      context.drawImage(blob5, -40, pos(1730, -5900, relativeY, 0));
+      context.drawImage(blob6, 325, pos(2860, -7900, relativeY, 0));
+      context.drawImage(blob7, 725, pos(2550, -4900, relativeY, 0));
+      context.drawImage(blob8, 570, pos(2300, -3700, relativeY, 0));
+      context.drawImage(blob9, 640, pos(3700, -9000, relativeY, 0));
+
+      // Allow another rAF call to be scheduled
+      ticking = false;
+    }
+
+    /**
+     * Calculates a relative disposition given the page’s scroll
+     * range normalized from 0 to 1
+     * @param {number} base The starting value.
+     * @param {number} range The amount of pixels it can move.
+     * @param {number} relY The normalized scroll value.
+     * @param {number} offset A base normalized value from which to start the scroll behavior.
+     * @returns {number} The updated position value.
+     */
+    function pos(base, range, relY, offset) {
+      return base + limit(0, 1, relY - offset) * range;
+    }
+
+    /**
+     * Clamps a number to a range.
+     * @param {number} min The minimum value.
+     * @param {number} max The maximum value.
+     * @param {number} value The value to limit.
+     * @returns {number} The clamped value.
+     */
+    function limit(min, max, value) {
+      return Math.max(min, Math.min(max, value));
+    }
+    </script>
+  </body>
+</html>
