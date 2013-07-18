@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 			flash[:notice] = "Account Created"
 			redirect_to root_path
 		else
-			flash[:error] = "Something went wrong!"
+			flash[:error] = "Try again"
 			render "new"	
 		end
 	end
