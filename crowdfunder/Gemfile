@@ -43,6 +43,8 @@ end
 group :development do
   gem 'better_errors' # makes the errors we see in the browser more descriptive
   gem 'pry-rails'
+  gem "database_cleaner" # used to "undo" any changes we made to the db during tests
+  gem "capybara-webkit", '~> 1.0.0' # Capybara driver needed to handle JS
 end
 
 group :test do 
