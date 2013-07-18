@@ -30,6 +30,11 @@ class ProjectFlowsTest < ActionDispatch::IntegrationTest
   end
 
   test "navigation" do
+
+    # Create a project to visit its show page at the end of the test
+    project1 = FactoryGirl.create(:project, :title => "Project 1")
+ 
+ 
     # Visit the root URL
     visit "/"
     # Assert the page we're on is root
@@ -43,5 +48,10 @@ class ProjectFlowsTest < ActionDispatch::IntegrationTest
     assert_equal projects_path, current_path
     # Assert the projects nav element is active
     assert_equal "Projects", find('.navbar ul li.active a').text
+
+       # On a project's show page, the Projects nav element should still be active
+    click_link 'Project 1'
+    assert_equal "Projects", find('.navbar ul li.active a').text
+  
   end
 end
