@@ -31,6 +31,8 @@ GEM
     better_errors (0.9.0)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
+    bootstrap-sass (2.3.2.0)
+      sass (~> 3.2)
     builder (3.1.4)
     capybara (2.1.0)
       mime-types (>= 1.16)
@@ -178,6 +180,7 @@ PLATFORMS
 
 DEPENDENCIES
   better_errors
+  bootstrap-sass (~> 2.3.2.0)
   capybara
   coffee-rails (~> 4.0.0)
   factory_girl_rails
@@ -187,7 +190,7 @@ DEPENDENCIES
   pg
   pry-rails
   rails
-  sass-rails (~> 4.0.0)
+  sass-rails
   sdoc
   sorcery
   turbolinks
