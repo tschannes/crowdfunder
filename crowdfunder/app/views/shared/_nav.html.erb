@@ -11,6 +11,9 @@
           <li class="<%= 'active' if  (current_page? projects_path) || (current_page? project_path(@project)) %>">
             <%= link_to 'Projects', :projects %>
           </li>
+          <li class="<%= 'active' if current_page? new_user_path %>">
+            <%= link_to 'Sign Up', new_user_path %>
+          </li>
         </ul>
       </div>
     </div>
