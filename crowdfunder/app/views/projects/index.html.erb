@@ -1,0 +1,9 @@
+<h1>Listing projects</h1>
+
+<p>
+	<% @projects.each do |project| %>
+		<h2><%= project.title %></h2>
+		<p><%= project.teaser %></p>
+		<hr>
+	<% end %>
+</p>
