@@ -7,11 +7,17 @@ class UsersController < ApplicationController
 	def create
 		@user = User.create(user_params)
 		if @user.save
+			auto_login(@user)
 			flash[:notice] = "Account created"
 			redirect_to root_path
 		else
-			render "new", notice: "Something went wrong."
+			flash[:error] = "Something went wrong!"
+			render "new"	
 		end
+	end
+
+	def update
+		@user = User.cre
 	end
 
 
