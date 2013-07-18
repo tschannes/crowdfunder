@@ -5,10 +5,10 @@ class UsersController < ApplicationController
 	end
 
 	def create
-		@user = User.create(user_params)
+		@user = User.new(user_params)
 		if @user.save
 			auto_login(@user)
-			flash[:notice] = "Account created"
+			flash[:notice] = "Account Created"
 			redirect_to root_path
 		else
 			flash[:error] = "Something went wrong!"
@@ -17,7 +17,8 @@ class UsersController < ApplicationController
 	end
 
 	def update
-		@user = User.cre
+		@user = User.find(params[:id])
+		@user.update_attributes(user_params)
 	end
 
 

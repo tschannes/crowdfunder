@@ -20,7 +20,7 @@ class UserAuthenticationFlowsTest < ActionDispatch::IntegrationTest
     # After submitting the form, should be redirected to root
     assert_equal root_path, current_path
     # While a message says "Account Created"
-    assert page.has_content?("Account created")
+    assert page.has_content?("Account Created")
     # And the nav no longer has a link to Sign Up but Logout
     assert find('.navbar').has_no_link?('Sign Up')
     assert find('.navbar').has_link?('Logout')

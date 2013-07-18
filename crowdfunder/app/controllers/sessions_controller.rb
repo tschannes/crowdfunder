@@ -4,17 +4,19 @@ class SessionsController < ApplicationController
 	end
 
 	def create
-		user = login(params[:email], params[:password], params[:remember_me])
+		user = login(params[:email], params[:password], params[:remember_me_token])
 		if user
-			redirect_back_or_to root_path, :notice => "Logged in!"
+			flash[:notice] =  "Logged in!"
+			redirect_back_or_to root_path
 		else
-			flash.now.alert = "Somethng went wrong!"
-			render new
+			flash.now.alert = "Something went wrong!"
+			render "new"
 		end
 	end
 
 	def destroy
 		logout
-		redirect_to root_url, :notice => "Logged out!"
+		flash[:notice] = "Logged out!"
+		redirect_to root_path
 	end
 end

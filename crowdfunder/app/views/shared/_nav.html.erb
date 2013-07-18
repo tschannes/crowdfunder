@@ -11,16 +11,16 @@
           <li class="<%= 'active' if  (current_page? projects_path) || (current_page? project_path(@project)) %>">
             <%= link_to 'Projects', :projects %>
           </li>
-          <% if true %>
+          <% if !current_user %>
             <li>
-              <%= link_to 'Create Account', signup_path %>
+              <%= link_to 'Sign Up', signup_path %>
             </li>
             <li>
               <%= link_to 'Sign In', login_path %>
             </li>
           <% else %>
             <li>
-              <%= link_to 'Sign Out', logout_path %>
+              <%= link_to 'Logout', logout_path %>
             </li>
           <% end %>
         </ul>
