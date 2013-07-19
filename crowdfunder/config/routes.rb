@@ -1,16 +1,18 @@
 Crowdfunder::Application.routes.draw do
 
-  get "logout" => "sessions#destroy", :as => "logout"
-  get "login" => "sessions#new", :as => "login"
-  get "signup" => "users#new", :as => "signup"
+	get "logout" => "sessions#destroy", :as => "logout"
+	get "login" => "sessions#new", :as => "login"
+	get "signup" => "users#new", :as => "signup"
 
-  resources :users
-  resources :sessions
+	resources :users
+	resources :sessions
+	
+	namespace :my do
+		resources :projects do
+			resources :pledges
+		end
+	end
 
-  resources :projects do
-  	resources :pledges
-  end
+	root 'projects#index'
 
-  root 'projects#index'
-  
 end
