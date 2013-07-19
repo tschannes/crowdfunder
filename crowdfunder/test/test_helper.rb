@@ -4,6 +4,10 @@ require 'rails/test_help'
 
 class ActiveSupport::TestCase
 
+  teardown do 
+    DatabaseCleaner.clean
+  end
+
 end
 
 DatabaseCleaner.strategy = :truncation
@@ -23,6 +27,8 @@ class ActionDispatch::IntegrationTest
     DatabaseCleaner.clean       # Erase what we put into the database during the tests
     Capybara.reset_sessions!    # Reset browser session
     Capybara.use_default_driver # Revert Capybara.current_driver to Capybara.default_driver
+
+
   end
 
   # This is a helper method we can call anywhere in the tests
@@ -35,6 +41,9 @@ class ActionDispatch::IntegrationTest
     fill_in "Password", with: pass
     click_button "Login"
 
+    user
+
     # No asserts because testing is not done inside of a helper method
   end
+
 end

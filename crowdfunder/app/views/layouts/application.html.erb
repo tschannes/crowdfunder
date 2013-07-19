@@ -24,11 +24,11 @@
               <!-- render 'layouts/messages -->
               <% if flash[:notice] %>
                 <p class="alert alert-success"><%= flash[:notice] %></p>
-              
-              <% elsif flash[:alert] %>
+              <% end %>
+              <% if flash[:alert] %>
                 <p class="alert alert-warning"><%= flash[:alert] %></p>
-              
-              <% else flash[:error] %>
+              <% end %>
+              <% if flash[:error] %>
                 <p class="alert alert-error"><%= flash[:error] %></p>
               <% end %>
               <%= yield %>

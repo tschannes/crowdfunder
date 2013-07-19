@@ -5,3 +5,16 @@
 	<li><%= @project.description %></li>
 	<li><%= @project.goal %></li>
 </ul>
+
+<button>
+	<%= link_to "Back This Project", new_project_pledge_path(@project) %>
+</button>
+
+<% if @project.pledges.any? %>
+	<div>
+
+		<h2>Last pledge made</h2>
+		<%= @project.pledges.last.amount %>
+		
+	</div>
+<% end %>
