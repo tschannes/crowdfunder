@@ -14,7 +14,11 @@
 	<div>
 
 		<h2>Last pledge made</h2>
-		<%= @project.pledges.last.amount %>
+		<p><%= @project.pledges.last.amount %></p>
+		
+		<h2>Total pledges</h2>
+		<% binding.pry %>
+		<p>Total pledged: <%= @total %> Dollars</p>
 		
 	</div>
 <% end %>
