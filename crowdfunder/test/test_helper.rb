@@ -46,4 +46,21 @@ class ActionDispatch::IntegrationTest
     # No asserts because testing is not done inside of a helper method
   end
 
+  class ActionDispatch::IntegrationTest
+  
+  self.use_transactional_fixtures = false 
+
+  setup do
+    reset_email
+  end
+  
+  def last_email
+    ActionMailer::Base.deliveries.last
+  end
+ 
+  def reset_email
+    ActionMailer::Base.deliveries = []
+  end
+end
+
 end

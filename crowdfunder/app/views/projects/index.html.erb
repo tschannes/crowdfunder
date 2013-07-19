@@ -2,7 +2,7 @@
 
 <p>
 	<% @projects.each do |project| %>
-		<h2><%= link_to project.title, project_path(project) %></h2>
+		<h3><%= link_to project.title, project_path(project) %></h3>
 		
 		<p><%= project.teaser %></p>
 		<hr>
