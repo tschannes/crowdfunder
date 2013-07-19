@@ -7,10 +7,12 @@ Crowdfunder::Application.routes.draw do
 	resources :users
 	resources :sessions
 	
+	resources :projects do
+		resources :pledges
+	end
+
 	namespace :my do
-		resources :projects do
-			resources :pledges
-		end
+		resources :projects
 	end
 
 	root 'projects#index'

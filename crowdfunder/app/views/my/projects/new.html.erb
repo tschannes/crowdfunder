@@ -1,0 +1,16 @@
+<%= form_for [:my, @project] do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %><br />
+
+  <%= f.label :teaser %>
+  <%= f.text_field :teaser %><br />
+
+  <%= f.label :description %>
+  <%= f.text_field :description %><br />
+
+  <%= f.label :goal %>
+  <%= f.text_field :goal %><br />
+
+<%= f.submit "Publish Project", { :class => 'btn' } %>
+
+<% end %>

@@ -6,9 +6,7 @@
 	<li><%= @project.goal %></li>
 </ul>
 
-<button>
-	<%= link_to "Back This Project", new_project_pledge_path(@project) %>
-</button>
+<%= link_to "Back This Project", new_project_pledge_path(@project), { :class => 'btn' } %>
 
 <% if @project.pledges.any? %>
 	<div>
@@ -17,7 +15,7 @@
 		<p><%= @project.pledges.last.amount %></p>
 		
 		<h2>Total pledges</h2>
-		<% binding.pry %>
+		
 		<p>Total pledged: <%= @total %> Dollars</p>
 		
 	</div>
