@@ -18,8 +18,10 @@ class PledgesController < ApplicationController
 			@pledge.user_id = @user.id
 		
 		if @pledge.save
+			#sending a confirmation-email
+			UserMailer.new_pledge(@pledge).deliver
 		
-			flash[:notice] = "Thanks for pledging#{@pledge.amount}"
+			flash[:notice] = "Thanks for pledging #{@pledge.amount} Dollars to #{@pledge.project.title.upcase}"
 			redirect_to project_path(@project)
 		else
 			flash[:error] = "Something went wrong!"

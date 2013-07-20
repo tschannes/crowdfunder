@@ -1,0 +1,8 @@
+<div style="width:100%;background-color:black">
+	
+	<h1 style="color:red">Dear <%= @user.user.first_name %>! Thanks for your pledge to <%= @user.project.title.capitalize %> </h1>
+	<p style="color:white">
+		You rock like the stones, you swing like Charlie and you -- - Whatever. We've got your money.
+		<%= @user.amount.to_s %>
+	</p>
+</div>
