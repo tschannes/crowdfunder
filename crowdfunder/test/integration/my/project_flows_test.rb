@@ -80,4 +80,22 @@ class My::ProjectFlowsTest < ActionDispatch::IntegrationTest
     # page.assert_selector '.navbar ul li.active a', count: 1
   end
 
+  test "can delete my project" do 
+    Capybara.current_driver = Capybara.javascript_driver
+
+    me = setup_signed_in_user
+    project = FactoryGirl.create :project, user: me
+
+    visit edit_my_project_path(project)
+
+    assert has_link?("Delete Project")
+    click_link 'Delete Project'
+
+    page.driver.accept_js_confirms! # Warning: this is specific to webkit driver
+
+    assert page.has_content? ('deleted')
+
+    assert_nil Project.find_by_id(project.id)
+  end
+
 end
