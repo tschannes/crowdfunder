@@ -14,3 +14,5 @@
 	<%= f.submit "Update Project", { :class => 'btn' } %>
 
 <% end %>
+
+<%= link_to "Delete Project", [ :my, @project ], data: { confirm: "Are you sure you want to delete #{@project.title}?" }, :method => :delete %>

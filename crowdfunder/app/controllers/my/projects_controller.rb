@@ -48,6 +48,13 @@ class My::ProjectsController < ApplicationController
 	    @project = Project.find(params[:id])
 	end
 
+	def destroy
+	    @project = Project.find(params[:id])
+	    @project.destroy
+	    flash[:notice] = "deleted"
+	    redirect_to root_path
+  	end
+
 
 	protected
 
