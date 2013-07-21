@@ -1,10 +1,13 @@
-<h1>Listing projects</h1>
+<h1>Displaying projects <%= @first %> - <%= @last %> of <%= @number_of_projects_total %> overall</h1>
+
 
 <p>
+	<%= paginate @projects %>
 	<% @projects.each do |project| %>
 		<h3><%= link_to project.title, project_path(project) %></h3>
 		
 		<p><%= project.teaser %></p>
 		<hr>
 	<% end %>
+	<%= paginate @projects %>
 </p>
