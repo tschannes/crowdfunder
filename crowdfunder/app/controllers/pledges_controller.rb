@@ -19,6 +19,8 @@ class PledgesController < ApplicationController
 		
 		if @pledge.save
 			#sending a confirmation-email
+			
+			#UserMailer delivers two messages
 			UserMailer.new_pledge(@pledge).deliver
 		
 			flash[:notice] = "Thanks for pledging #{@pledge.amount} Dollars to #{@pledge.project.title.upcase}"
