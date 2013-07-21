@@ -1,10 +1,10 @@
 class ProjectsController < ApplicationController
 
 	def index
-		projects = Project.order("created_at DESC").page(params[:page]).per(8)
-		@number_of_projects_total = Project.all.count
-		@first = @projects.first.id
-		@last = @projects.last.id
+		@projects = Project.order("created_at DESC").page(params[:page]).per(8)
+		#@number_of_projects_total = Project.all.count
+		# @first = @projects.first.id
+		# @last = @projects.last.id
 	end
 
 	def show

@@ -62,7 +62,7 @@ class ProjectFlowsTest < ActionDispatch::IntegrationTest
     visit "/projects"
 
     # Expect the most recently created projects on page 1 (8 PER PAGE)
-    assert page.has_content?('Displaying projects 49 - 42 of 50 overall')
+    assert page.has_content?('Displaying projects 1 - 8 of 50 in total')
     assert page.has_content?('Project 49')
     assert page.has_no_content?('Project 41')
     page.assert_selector 'li.project', count: 8
