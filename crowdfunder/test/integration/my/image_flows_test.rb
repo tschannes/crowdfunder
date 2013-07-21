@@ -8,7 +8,7 @@ class My::ImageFlowsTest < ActionDispatch::IntegrationTest
   end
 
   test "successfully uploading an image for my project" do 
-    visit edit_my_project_path(@project)
+    visit my_projects_path
 
     assert page.has_link?('Manage Images')
     click_link 'Manage Images'
@@ -17,7 +17,7 @@ class My::ImageFlowsTest < ActionDispatch::IntegrationTest
     page.assert_no_selector '.image'
 
     path = File.join(Rails.root, 'app', 'assets', 'images', "rails.png") 
-    attach_file("image[file]", path)
+    attach_file("project[image]", path)
     click_button("Upload Image")
 
     # The project shouldn't have one thumbnail
@@ -28,14 +28,14 @@ class My::ImageFlowsTest < ActionDispatch::IntegrationTest
     visit my_project_images_path(@project)
 
     path = File.join(Rails.root, 'app', 'assets', 'javascripts', "application.js") 
-    attach_file("image[file]", path)
+    attach_file("project[image]", path)
     click_button("Upload Image")
 
     # Expect to see an error message
     assert page.has_content?('not allowed')
 
     # Should have 0 images on the page
-    page.assert_no_selector '.image'
+    page.assert_selector '.image', count: 1
   end
 
 end

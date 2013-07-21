@@ -11,10 +11,14 @@ class My::ProjectsController < ApplicationController
 		@project = Project.new strong_params
 		@project.user_id = current_user.id
 		
-		@project.save
+		if @project.save
 		
-		flash[:notice] = "Project created"
-		redirect_to my_projects_path
+			flash[:notice] = "Project created"
+			redirect_to my_projects_path
+		else
+			flash[:error] = "not allowed"
+			redirect_to my_project_images_path(@project)
+		end
 	end
 
 
@@ -26,14 +30,22 @@ class My::ProjectsController < ApplicationController
 	def update
 		@project = Project.find(params[:id])
 
-		@project.update_attributes strong_params
-		flash[:notice] = "Project was updated successfully."
-		redirect_to my_projects_path
+		if @project.update_attributes strong_params
+			flash[:notice] = "Project was updated successfully."
+			redirect_to my_projects_path
+		else
+			flash[:error] = "not allowed"
+			redirect_to my_projects_path
+		end
 	end
 
 
 	def index
 		@projects = current_user.projects
+	end
+
+	def show
+	    @project = Project.find(params[:id])
 	end
 
 
@@ -48,6 +60,6 @@ class My::ProjectsController < ApplicationController
 	end
 
 	def strong_params
-		params.require(:project).permit(:title, :teaser, :description, :goal)
+		params.require(:project).permit(:title, :teaser, :description, :goal, :image)
 	end
 end

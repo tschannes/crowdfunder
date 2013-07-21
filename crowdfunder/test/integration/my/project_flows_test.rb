@@ -11,7 +11,7 @@ class My::ProjectFlowsTest < ActionDispatch::IntegrationTest
 
     visit '/my/projects'
 
-    page.assert_selector('div.project', count: 3)
+    page.assert_selector('.project', count: 3)
     assert page.has_no_content?("Other Dude's Project")
   end
 

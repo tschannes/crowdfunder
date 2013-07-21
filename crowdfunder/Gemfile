@@ -7,6 +7,9 @@ gem 'rails'
 
 gem 'pg'
 
+#gem for uploading images
+gem 'carrierwave'
+
 gem 'sorcery'
 
 # Use SCSS for stylesheets

@@ -5,4 +5,6 @@ class Project < ActiveRecord::Base
   
   #paginates_per 8
 
+  mount_uploader :image, ImageUploader
+
 end
